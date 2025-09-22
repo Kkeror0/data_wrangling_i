@@ -164,3 +164,11 @@ read in a SAS
 ``` r
 pulse_df=read_sas('./data/public_pulse_data.sas7bdat')
 ```
+
+\#comparision with Base R whynot ‘read.csv’…?—never use it
+
+\##exporting data
+
+``` r
+write_csv(mlb_df,'./data/mlb_subtable.csv')
+```
