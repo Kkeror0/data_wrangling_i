@@ -34,3 +34,64 @@ litters_df=read_csv('./data/FAS_litters.csv')
 ``` r
 litters_df=janitor::clean_names(litters_df)
 ```
+
+\##select-column
+
+``` r
+select(litters_df, group, litter_number)
+```
+
+    ## # A tibble: 49 × 2
+    ##    group litter_number  
+    ##    <chr> <chr>          
+    ##  1 Con7  #85            
+    ##  2 Con7  #1/2/95/2      
+    ##  3 Con7  #5/5/3/83/3-3  
+    ##  4 Con7  #5/4/2/95/2    
+    ##  5 Con7  #4/2/95/3-3    
+    ##  6 Con7  #2/2/95/3-2    
+    ##  7 Con7  #1/5/3/83/3-3/2
+    ##  8 Con8  #3/83/3-3      
+    ##  9 Con8  #2/95/3        
+    ## 10 Con8  #3/5/2/2/95    
+    ## # ℹ 39 more rows
+
+``` r
+select(litters_df, starts_with('gd'))
+```
+
+    ## # A tibble: 49 × 3
+    ##    gd0_weight gd18_weight gd_of_birth
+    ##    <chr>      <chr>             <dbl>
+    ##  1 19.7       34.7                 20
+    ##  2 27         42                   19
+    ##  3 26         41.4                 19
+    ##  4 28.5       44.1                 19
+    ##  5 <NA>       <NA>                 20
+    ##  6 <NA>       <NA>                 20
+    ##  7 <NA>       <NA>                 20
+    ##  8 <NA>       <NA>                 20
+    ##  9 <NA>       <NA>                 20
+    ## 10 28.5       <NA>                 20
+    ## # ℹ 39 more rows
+
+\##‘filter’-rows
+
+``` r
+filter(litters_df, gd0_weight<22)
+```
+
+    ## # A tibble: 10 × 8
+    ##    group litter_number gd0_weight gd18_weight gd_of_birth pups_born_alive
+    ##    <chr> <chr>         <chr>      <chr>             <dbl>           <dbl>
+    ##  1 Con7  #85           19.7       34.7                 20               3
+    ##  2 Mod7  #59           17         33.4                 19               8
+    ##  3 Mod7  #103          21.4       42.1                 19               9
+    ##  4 Mod7  #8/110/3-2    .          .                    20               9
+    ##  5 Mod7  #106          21.7       37.8                 20               5
+    ##  6 Mod7  #62           19.5       35.9                 19               7
+    ##  7 Mod8  #5/93/2       .          .                    19               8
+    ##  8 Low8  #53           21.8       37.2                 20               8
+    ##  9 Low8  #100          20         39.2                 20               8
+    ## 10 Low8  #4/84         21.8       35.2                 20               4
+    ## # ℹ 2 more variables: pups_dead_birth <dbl>, pups_survive <dbl>

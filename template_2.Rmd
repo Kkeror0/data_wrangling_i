@@ -13,3 +13,24 @@ litters_df=read_csv('./data/FAS_litters.csv')
 litters_df=janitor::clean_names(litters_df)
 ```
 
+##select-column
+```{r}
+select(litters_df, group, litter_number)
+```
+```{r}
+select(litters_df, starts_with('gd'))
+```
+
+##'filter'-rows
+```{r}
+filter(litters_df, gd0_weight<22)
+```
+
+
+
+
+
+
+
+
+
